@@ -4,11 +4,11 @@ h1 {
     color:green;
 }
 
-div {
-    margin: 50px;
-}
-
 .card {
     /* Add your custom styles here */
     border-color: blue;
+}
+
+.text-margin {
+    margin: 50px;
 }
