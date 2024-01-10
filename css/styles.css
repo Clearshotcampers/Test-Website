@@ -12,3 +12,7 @@ h1 {
 .text-margin {
     margin: 50px;
 }
+
+.navbar-brand {
+    padding-left: 50px; /* Adjust the value as needed */
+}
