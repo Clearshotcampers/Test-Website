@@ -98,3 +98,99 @@
 </body>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    td:hover {
+      background-color: #e6f7ff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Booking Calendar</h1>
+
+<div id="calendar"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const calendarContainer = document.getElementById("calendar");
+
+    // Generate a simple calendar for the current month
+    function generateCalendar(year, month) {
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const firstDayOfMonth = new Date(year, month, 1).getDay();
+
+      let tableHTML = '<table><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>';
+
+      // Add empty cells for days before the first day of the month
+      for (let i = 0; i < firstDayOfMonth; i++) {
+        tableHTML += '<td></td>';
+      }
+
+      let day = 1;
+      for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 7; j++) {
+          if (day <= daysInMonth) {
+            tableHTML += `<td>${day}</td>`;
+            day++;
+          } else {
+            tableHTML += '<td></td>';
+          }
+        }
+        if (day > daysInMonth) {
+          break;
+        }
+        tableHTML += '</tr><tr>';
+      }
+
+      tableHTML += '</tr></table>';
+      calendarContainer.innerHTML = tableHTML;
+
+      // Add click event listener to each day cell (you can modify this part for your booking logic)
+      const dayCells = document.querySelectorAll("#calendar td");
+      dayCells.forEach(cell => {
+        cell.addEventListener("click", function () {
+          alert(`You clicked on ${cell.innerText}`);
+          // Add your booking logic here
+        });
+      });
+    }
+
+    // Get the current date
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+
+    // Generate the calendar for the current month
+    generateCalendar(currentYear, currentMonth);
+  });
+</script>
+
+</body>
+</html>
