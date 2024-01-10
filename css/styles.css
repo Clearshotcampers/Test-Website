@@ -1,3 +1,14 @@
 h1 {
+    margin: 50px;
+    text-align: center;
     color:green;
+}
+
+div {
+    margin: 50px;
+}
+
+.card {
+    /* Add your custom styles here */
+    border-color: blue;
 }
